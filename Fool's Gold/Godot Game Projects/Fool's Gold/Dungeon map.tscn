@@ -312,7 +312,7 @@ extents = Vector2( 15.6504, 18.1411 )
 
 [sub_resource type="Curve2D" id=16]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 264, 42, 0, 0, 0, 0, 440, 40 )
+"points": PoolVector2Array( 0, 0, 0, 0, 446.034, 36.9063, 0, 0, 0, 0, 267.017, 41.0312, 0, 0, 0, 0, 447.04, 36.9063 )
 }
 
 [node name="Dungeon map" type="Node2D"]
@@ -438,12 +438,15 @@ __meta__ = {
 }
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2( 3.5, 7.21212 )
+scale = Vector2( 0.994318, 0.969697 )
 curve = SubResource( 16 )
 script = ExtResource( 20 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 264, 42 )
+position = Vector2( 446.034, 36.9063 )
 rotation = -0.0113611
+rotate = false
 
 [node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D"]
 position = Vector2( 3.44864, -0.985458 )
