@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Tile map/hall_corner_left_v1.png" type="Texture" id=1]
 [ext_resource path="res://Tile map/hall_corner_right_v1.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://money_bag.png" type="Texture" id=17]
 [ext_resource path="res://Money Machine/obj_bag.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Count.gd" type="Script" id=19]
+[ext_resource path="res://Path2D.gd" type="Script" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 62, 0, 63, 63, 56, 63, 57, 19, 0, 20 )
@@ -254,17 +255,18 @@ extents = Vector2( 2.2953, 6.27969 )
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 15.6504, 18.1411 )
 
+[sub_resource type="Curve2D" id=15]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 264, 42, 0, 0, 0, 0, 440, 40 )
+}
+
 [node name="Dungeon map" type="Node2D"]
+position = Vector2( -1, 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 11 )
 format = 1
 tile_data = PoolIntArray( 0, 1, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 4, 0, 7, 4, 0, 8, 4, 0, 9, 4, 0, 10, 4, 0, 11, 4, 0, 12, 1, 0, 13, 4, 0, 14, 4, 0, 15, 0, 0, 65536, 3, 0, 65537, 4, 0, 65538, 4, 0, 65539, 0, 0, 65540, 8, 0, 65541, 8, 0, 65542, 8, 0, 65543, 1, 0, 65544, 4, 0, 65545, 4, 0, 65546, 8, 0, 65547, 8, 0, 65548, 3, 0, 65549, 4, 0, 65550, 4, 0, 65551, 3, 0, 131072, 3, 0, 131073, 8, 0, 131074, 8, 0, 131075, 3, 0, 131076, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 6, 0, 131080, 8, 0, 131081, 7, 0, 131082, 8, 0, 131083, 8, 0, 131084, 3, 0, 131085, 8, 0, 131086, 6, 0, 131087, 3, 0, 196608, 3, 0, 196609, 4, 0, 196610, 4, 0, 196611, 3, 0, 196612, 4, 0, 196613, 4, 0, 196614, 4, 0, 196615, 4, 0, 196616, 4, 0, 196617, 4, 0, 196618, 8, 0, 196619, 8, 0, 196620, 6, 0, 196621, 8, 0, 196622, 6, 0, 196623, 3, 0, 262144, 3, 0, 262145, 8, 0, 262146, 8, 0, 262147, 7, 0, 262148, 8, 0, 262149, 8, 0, 262150, 8, 0, 262151, 8, 0, 262152, 7, 0, 262153, 4, 0, 262154, 4, 0, 262155, 4, 0, 262156, 4, 0, 262157, 4, 0, 262158, 6, 0, 262159, 3, 0, 327680, 3, 0, 327681, 4, 0, 327682, 7, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 3, 0, 327689, 8, 0, 327690, 8, 0, 327691, 8, 0, 327692, 8, 0, 327693, 8, 0, 327694, 6, 0, 327695, 3, 0, 393216, 3, 0, 393217, 7, 0, 393218, 4, 0, 393219, 7, 0, 393220, 8, 0, 393221, 8, 0, 393222, 6, 0, 393223, 8, 0, 393224, 7, 0, 393225, 8, 0, 393226, 3, 0, 393227, 4, 0, 393228, 4, 0, 393229, 4, 0, 393230, 8, 0, 393231, 3, 0, 458752, 3, 0, 458753, 7, 0, 458754, 8, 0, 458755, 4, 0, 458756, 8, 0, 458757, 8, 0, 458758, 4, 0, 458759, 4, 0, 458760, 7, 0, 458761, 8, 0, 458762, 3, 0, 458763, 8, 0, 458764, 4, 0, 458765, 4, 0, 458766, 4, 0, 458767, 3, 0, 524288, 6, 0, 524289, 7, 0, 524290, 5, 0, 524291, 2, 0, 524292, 2, 0, 524293, 2, 0, 524294, 2, 0, 524295, 2, 0, 524296, 2, 0, 524297, 5, 0, 524298, 5, 0, 524299, 5, 0, 524300, 2, 0, 524301, 2, 0, 524302, 5, 0, 524303, 3, 0 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 367, 46 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 10 )
 
 [node name="obj_player" type="KinematicBody2D" parent="."]
 position = Vector2( 29, 539 )
@@ -378,6 +380,19 @@ script = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 15 )
+script = ExtResource( 20 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 264, 42 )
+rotation = -0.0113611
+
+[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D"]
+position = Vector2( 3.44864, -0.985458 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
 [connection signal="bagsCollected" from="Bags/obj_bag" to="Control/Count" method="_on_obj_bag_collected"]
 [connection signal="body_entered" from="Bags/obj_bag" to="Bags/obj_bag" method="_on_obj_bag_body_entered"]
 [connection signal="bagsCollected" from="Bags/obj_bag2" to="Control/Count" method="_on_obj_bag_collected"]
