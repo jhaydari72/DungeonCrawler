@@ -8,6 +8,8 @@ onready var sprite = $Sprite
 # var a = 2
 # var b = "text"
 
+var Key = 0
+
 # Called when the node enters the scene tree for the first time.
 func get_input():
 	velocity = Vector2()
@@ -32,3 +34,4 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	velocity = move_and_slide(velocity)
+	Key = min(Key, 9)
