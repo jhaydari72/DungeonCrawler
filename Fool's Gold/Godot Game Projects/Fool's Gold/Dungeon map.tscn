@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=57 format=2]
-=======
-[gd_scene load_steps=51 format=2]
->>>>>>> Stashed changes
 
 [ext_resource path="res://Tile map/hall_corner_left_v1.png" type="Texture" id=1]
 [ext_resource path="res://Tile map/hall_corner_right_v1.png" type="Texture" id=2]
@@ -20,6 +16,7 @@
 [ext_resource path="res://torch_unlit_v1.png" type="Texture" id=14]
 [ext_resource path="res://Unlit torch.gd" type="Script" id=15]
 [ext_resource path="res://torch_light.gd" type="Script" id=16]
+[ext_resource path="res://money_bag.png" type="Texture" id=17]
 [ext_resource path="res://Money Machine/obj_bag.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Count.gd" type="Script" id=19]
 [ext_resource path="res://Path2D.gd" type="Script" id=20]
@@ -35,26 +32,11 @@
 [ext_resource path="res://Player anims/walk_down4.png" type="Texture" id=30]
 [ext_resource path="res://Player anims/walk_up2.png" type="Texture" id=31]
 [ext_resource path="res://Player anims/walk_down3.png" type="Texture" id=32]
-<<<<<<< Updated upstream
 [ext_resource path="res://key_static_v1.png" type="Texture" id=33]
 [ext_resource path="res://Key_count.gd" type="Script" id=34]
 [ext_resource path="res://Key.gd" type="Script" id=35]
 [ext_resource path="res://Money Machine/Door Close.png" type="Texture" id=36]
 [ext_resource path="res://obj_door.gd" type="Script" id=37]
-=======
-[ext_resource path="res://Font/dogicapixelbold.ttf" type="DynamicFontData" id=33]
-
-[sub_resource type="DynamicFont" id=17]
-size = 7
-outline_size = 3
-outline_color = Color( 0.945098, 1, 0, 1 )
-use_filter = true
-font_data = ExtResource( 33 )
-
-[sub_resource type="DynamicFont" id=18]
-size = 4
-font_data = ExtResource( 33 )
->>>>>>> Stashed changes
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 62, 0, 63, 63, 56, 63, 57, 19, 0, 20 )
@@ -289,7 +271,6 @@ animations = [ {
 "name": "right_walk",
 "speed": 7.0
 }, {
-<<<<<<< Updated upstream
 "frames": [ ExtResource( 24 ) ],
 "loop": true,
 "name": "down_idle",
@@ -300,8 +281,6 @@ animations = [ {
 "name": "up_idle",
 "speed": 1.0
 }, {
-=======
->>>>>>> Stashed changes
 "frames": [ ExtResource( 21 ), ExtResource( 25 ) ],
 "loop": true,
 "name": "left_walk",
@@ -312,29 +291,15 @@ animations = [ {
 "name": "left_idle",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 31 ), ExtResource( 22 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "up_walk",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "down_walk",
 "speed": 7.0
 }, {
-<<<<<<< Updated upstream
 "frames": [ ExtResource( 26 ), ExtResource( 31 ), ExtResource( 22 ), ExtResource( 11 ) ],
-=======
-"frames": [ ExtResource( 24 ) ],
 "loop": true,
-"name": "down_idle",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 26 ) ],
->>>>>>> Stashed changes
-"loop": true,
-"name": "up_idle",
-"speed": 1.0
+"name": "up_walk",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 28 ) ],
 "loop": true,
@@ -364,47 +329,6 @@ _data = {
 [node name="Dungeon map" type="Node2D"]
 position = Vector2( -1, 2 )
 
-[node name="Control" type="Control" parent="."]
-margin_left = 0.0694427
-margin_top = 6.34717
-margin_right = 1024.07
-margin_bottom = 579.347
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Control"]
-margin_left = 74.038
-margin_top = 500.44
-margin_right = 82.038
-margin_bottom = 507.44
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 17 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "$"
-align = 1
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Count" type="Label" parent="Control"]
-margin_left = 86.4587
-margin_top = 497.014
-margin_right = 101.459
-margin_bottom = 505.014
-rect_scale = Vector2( 2.00764, 1.44466 )
-custom_fonts/font = SubResource( 18 )
-custom_colors/font_color = Color( 0.945098, 1, 0, 1 )
-text = "100"
-align = 1
-valign = 1
-script = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 11 )
 format = 1
@@ -420,21 +344,11 @@ scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 12 )
 animation = "down_idle"
 
-[node name="Camera2D" type="Camera2D" parent="obj_player/Sprite"]
-current = true
-zoom = Vector2( 0.15, 0.12 )
-smoothing_enabled = true
-drag_margin_left = 0.21
-drag_margin_top = 0.36
-drag_margin_right = 0.21
-drag_margin_bottom = 0.36
-editor_draw_drag_margin = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_player"]
 shape = SubResource( 13 )
 
 [node name="Light2D" type="Light2D" parent="obj_player"]
-position = Vector2( -0.333504, 1.27783 )
+position = Vector2( 8.27739, 3.5 )
 scale = Vector2( 0.208, 0.206 )
 texture = ExtResource( 13 )
 shadow_enabled = true
@@ -443,8 +357,8 @@ shadow_enabled = true
 script = ExtResource( 15 )
 
 [node name="torch_light" type="Light2D" parent="Unlit torch"]
-position = Vector2( 45.3684, 445.587 )
-scale = Vector2( 0.124392, 0.133926 )
+position = Vector2( 48.4977, 452.346 )
+scale = Vector2( 0.168953, 0.162966 )
 texture = ExtResource( 13 )
 shadow_enabled = true
 script = ExtResource( 16 )
@@ -462,7 +376,7 @@ shape = SubResource( 14 )
 position = Vector2( 0, 2.57212 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Unlit torch/Area2D"]
-position = Vector2( 47.2869, 445.115 )
+position = Vector2( 44.0324, 448.119 )
 shape = SubResource( 15 )
 
 [node name="Bags" type="Node2D" parent="."]
@@ -494,7 +408,6 @@ position = Vector2( 97.4216, 477.968 )
 [node name="obj_bag9" parent="Bags" instance=ExtResource( 18 )]
 position = Vector2( 743.579, 50.7986 )
 
-<<<<<<< Updated upstream
 [node name="Control" type="Control" parent="."]
 margin_left = 0.347885
 margin_top = 6.25052
@@ -558,8 +471,6 @@ margin_bottom = 24.0
 text = "0"
 script = ExtResource( 34 )
 
-=======
->>>>>>> Stashed changes
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 3.5, 7.21212 )
 scale = Vector2( 0.994318, 0.969697 )
