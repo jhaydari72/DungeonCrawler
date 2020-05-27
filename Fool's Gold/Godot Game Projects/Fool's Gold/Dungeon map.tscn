@@ -13,9 +13,9 @@
 [ext_resource path="res://Player anims/walk_up4.png" type="Texture" id=11]
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=12]
 [ext_resource path="res://LIghting .png" type="Texture" id=13]
-[ext_resource path="res://torch_unlit_v1.png" type="Texture" id=14]
-[ext_resource path="res://Unlit torch.gd" type="Script" id=15]
-[ext_resource path="res://torch_light.gd" type="Script" id=16]
+[ext_resource path="res://Torch/torch_unlit_v1.png" type="Texture" id=14]
+[ext_resource path="res://Torch/Unlit torch.gd" type="Script" id=15]
+[ext_resource path="res://Torch/torch_light.gd" type="Script" id=16]
 [ext_resource path="res://money_bag.png" type="Texture" id=17]
 [ext_resource path="res://Money Machine/obj_bag.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Count.gd" type="Script" id=19]
@@ -281,10 +281,15 @@ animations = [ {
 "name": "left_idle",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 28 ) ],
+"frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 23 ) ],
 "loop": true,
-"name": "right_idle",
-"speed": 1.0
+"name": "down_walk",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "right_walk",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 24 ) ],
 "loop": true,
@@ -296,15 +301,10 @@ animations = [ {
 "name": "up_idle",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 28 ) ],
 "loop": true,
-"name": "down_walk",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "right_walk",
-"speed": 7.0
+"name": "right_idle",
+"speed": 1.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=13]
