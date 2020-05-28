@@ -326,7 +326,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=23]
 resource_name = "left_idle"
 length = 0.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -443,6 +442,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=30]
 resource_name = "up_walk"
 length = 0.4
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -620,7 +620,7 @@ position = Vector2( 0, 3.31964 )
 scale = Vector2( 0.40462, 0.431326 )
 texture = ExtResource( 11 )
 hframes = 22
-frame = 2
+frame = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_player"]
 position = Vector2( 0.244171, 2.31964 )
