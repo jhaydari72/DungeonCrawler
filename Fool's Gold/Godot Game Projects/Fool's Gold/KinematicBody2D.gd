@@ -1,37 +1,34 @@
 extends KinematicBody2D
 
-export (int) var speed = 50
-
-var velocity = Vector2()
-onready var sprite = $Sprite
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+const ACCELERATION = 500
+const MAX_SPEED = 50
+const FRICTION = 500
 
 var Key = 0
+var velocity = Vector2.ZERO
 
-# Called when the node enters the scene tree for the first time.
-func get_input():
-	velocity = Vector2()
-	if Input.is_action_pressed("ui_d"):
-		velocity.x += 1
-		$Sprite.play("right_walk")
-	if Input.is_action_pressed("ui_a"):
-		velocity.x -= 1
-		$Sprite.play("left_walk")
-	if Input.is_action_pressed("ui_s"):
-		velocity.y += 1
-		$Sprite.play("down_walk")
-	if Input.is_action_pressed("ui_w"):
-		velocity.y -= 1
-		$Sprite.play("up_walk")
-	velocity = velocity.normalized() * speed
+onready var player_anim = $player_anim
+onready var animationTree = $AnimationTree
+onready var animationState = animationTree.get("parameters/playback")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
 func _physics_process(delta):
-	get_input()
+	
+	var input_vector = Vector2.ZERO
+	
+	input_vector.x = Input.get_action_strength("ui_d") - Input.get_action_strength("ui_a")
+	input_vector.y = Input.get_action_strength("ui_s") - Input.get_action_strength("ui_w")
+	input_vector = input_vector.normalized()
+	
+	if input_vector != Vector2.ZERO:
+		animationTree.set("parameters/Idle/blend_position", input_vector)
+		animationTree.set("parameters/Run/blend_position", input_vector)
+		animationState.travel("Run")
+		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+	else:
+		animationState.travel("Idle")
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	
 	velocity = move_and_slide(velocity)
 	Key = min(Key, 9)

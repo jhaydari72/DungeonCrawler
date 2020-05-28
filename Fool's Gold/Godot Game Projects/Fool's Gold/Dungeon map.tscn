@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Tile map/hall_corner_left_v1.png" type="Texture" id=1]
 [ext_resource path="res://Tile map/hall_corner_right_v1.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://Tile map/room_center_v1.png" type="Texture" id=8]
 [ext_resource path="res://Tile map/room_right_wall_v1.png" type="Texture" id=9]
 [ext_resource path="res://skeleton_anim_v1.png" type="Texture" id=10]
-[ext_resource path="res://Player anims/walk_up4.png" type="Texture" id=11]
+[ext_resource path="res://Player anims/spritesheet.png" type="Texture" id=11]
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=12]
 [ext_resource path="res://LIghting .png" type="Texture" id=13]
 [ext_resource path="res://Torch/torch_unlit_v1.png" type="Texture" id=14]
@@ -20,18 +20,6 @@
 [ext_resource path="res://Money Machine/obj_bag.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Count.gd" type="Script" id=19]
 [ext_resource path="res://Path2D.gd" type="Script" id=20]
-[ext_resource path="res://Player anims/walk_left1.png" type="Texture" id=21]
-[ext_resource path="res://Player anims/walk_up3.png" type="Texture" id=22]
-[ext_resource path="res://Player anims/walk_down5.png" type="Texture" id=23]
-[ext_resource path="res://Player anims/walk_down1.png" type="Texture" id=24]
-[ext_resource path="res://Player anims/walk_left2.png" type="Texture" id=25]
-[ext_resource path="res://Player anims/walk_up1.png" type="Texture" id=26]
-[ext_resource path="res://Player anims/walk_down2.png" type="Texture" id=27]
-[ext_resource path="res://Player anims/walk_right1.png" type="Texture" id=28]
-[ext_resource path="res://Player anims/walk_right2.png" type="Texture" id=29]
-[ext_resource path="res://Player anims/walk_down4.png" type="Texture" id=30]
-[ext_resource path="res://Player anims/walk_up2.png" type="Texture" id=31]
-[ext_resource path="res://Player anims/walk_down3.png" type="Texture" id=32]
 [ext_resource path="res://key_static_v1.png" type="Texture" id=33]
 [ext_resource path="res://Key_count.gd" type="Script" id=34]
 [ext_resource path="res://Key.gd" type="Script" id=35]
@@ -264,67 +252,287 @@ points = PoolVector2Array( 64, 64, 55, 64, 55, 1, 64, 1 )
 8/shapes = [  ]
 8/z_index = 0
 
-[sub_resource type="SpriteFrames" id=12]
-animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "left_walk",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 31 ), ExtResource( 22 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "up_walk",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 21 ) ],
-"loop": true,
-"name": "left_idle",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "down_walk",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "right_walk",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 24 ) ],
-"loop": true,
-"name": "down_idle",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 26 ) ],
-"loop": true,
-"name": "up_idle",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 28 ) ],
-"loop": true,
-"name": "right_idle",
-"speed": 1.0
-} ]
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 6.90907
+height = 9.01411
+
+[sub_resource type="Animation" id=19]
+resource_name = "attack_down"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "down_walk"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 9, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "idle_down"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "left_attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 2 ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "left_idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "left_walk"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 14, 15, 14 ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "right_attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 4 ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "right_idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "right_walk"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17, 16, 17, 16 ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "up_attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "up_idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "up_walk"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 19, 18, 21, 20 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "left_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "right_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "up_idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=35]
+blend_point_0/node = SubResource( 31 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 32 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 33 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 34 )
+blend_point_3/pos = Vector2( 0, -1 )
+snap = Vector2( 0.01, 0.01 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "down_walk"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "left_walk"
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "right_walk"
+
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "up_walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=42]
+blend_point_0/node = SubResource( 38 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 39 )
+blend_point_1/pos = Vector2( -1, 0 )
+blend_point_2/node = SubResource( 40 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 41 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+
+[sub_resource type="AnimationNodeStateMachine" id=36]
+states/Idle/node = SubResource( 35 )
+states/Idle/position = Vector2( 495, 100 )
+states/Run/node = SubResource( 42 )
+states/Run/position = Vector2( 657, 100 )
+transitions = [ "Idle", "Run", SubResource( 43 ), "Run", "Idle", SubResource( 44 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=45]
 
 [sub_resource type="RectangleShape2D" id=13]
-
-[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 2.2953, 6.27969 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 15.6504, 18.1411 )
 
-[sub_resource type="Curve2D" id=16]
+[sub_resource type="Curve2D" id=15]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 446.034, 36.9063, 0, 0, 0, 0, 267.017, 41.0312, 0, 0, 0, 0, 447.04, 36.9063 )
 }
 
+[sub_resource type="RectangleShape2D" id=16]
+
 [sub_resource type="RectangleShape2D" id=17]
 
 [sub_resource type="RectangleShape2D" id=18]
-
-[sub_resource type="RectangleShape2D" id=19]
 
 [node name="Dungeon map" type="Node2D"]
 position = Vector2( -1, 2 )
@@ -407,46 +615,70 @@ margin_bottom = 24.0
 text = "0"
 script = ExtResource( 34 )
 
-[node name="Sprite" type="AnimatedSprite" parent="obj_player"]
-position = Vector2( 0, 1 )
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 12 )
-animation = "down_idle"
+[node name="Sprite" type="Sprite" parent="obj_player"]
+position = Vector2( 0, 3.31964 )
+scale = Vector2( 0.40462, 0.431326 )
+texture = ExtResource( 11 )
+hframes = 22
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_player"]
-shape = SubResource( 13 )
+position = Vector2( 0.244171, 2.31964 )
+shape = SubResource( 12 )
 
 [node name="Light2D" type="Light2D" parent="obj_player"]
-position = Vector2( 8.27739, 3.5 )
+position = Vector2( 0.347748, 4.08081 )
 scale = Vector2( 0.208, 0.206 )
 texture = ExtResource( 13 )
 shadow_enabled = true
 
-[node name="Unlit torch" type="StaticBody2D" parent="."]
+[node name="player_anim" type="AnimationPlayer" parent="obj_player"]
+anims/attack_down = SubResource( 19 )
+anims/down_walk = SubResource( 20 )
+anims/idle_down = SubResource( 21 )
+anims/left_attack = SubResource( 22 )
+anims/left_idle = SubResource( 23 )
+anims/left_walk = SubResource( 24 )
+anims/right_attack = SubResource( 25 )
+anims/right_idle = SubResource( 26 )
+anims/right_walk = SubResource( 27 )
+anims/up_attack = SubResource( 28 )
+anims/up_idle = SubResource( 29 )
+anims/up_walk = SubResource( 30 )
+
+[node name="AnimationTree" type="AnimationTree" parent="obj_player"]
+tree_root = SubResource( 36 )
+anim_player = NodePath("../player_anim")
+active = true
+parameters/playback = SubResource( 45 )
+parameters/Idle/blend_position = Vector2( 0, 0 )
+parameters/Run/blend_position = Vector2( 0, 0 )
+
+[node name="torch" type="StaticBody2D" parent="."]
 script = ExtResource( 15 )
 
-[node name="torch_light" type="Light2D" parent="Unlit torch"]
-position = Vector2( 48.4977, 452.346 )
+[node name="torch_light" type="Light2D" parent="torch"]
+position = Vector2( 47.7412, 449.092 )
 scale = Vector2( 0.168953, 0.162966 )
 texture = ExtResource( 13 )
 shadow_enabled = true
 script = ExtResource( 16 )
 
-[node name="Sprite" type="Sprite" parent="Unlit torch"]
+[node name="Sprite" type="Sprite" parent="torch"]
 position = Vector2( 50.6324, 450.899 )
 scale = Vector2( 1.53905, 1.66589 )
 texture = ExtResource( 14 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Unlit torch"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="torch"]
 position = Vector2( 55.328, 457.012 )
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 
-[node name="Area2D" type="Area2D" parent="Unlit torch"]
+[node name="Area2D" type="Area2D" parent="torch"]
 position = Vector2( 0, 2.57212 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Unlit torch/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="torch/Area2D"]
 position = Vector2( 44.0324, 448.119 )
-shape = SubResource( 15 )
+shape = SubResource( 14 )
 
 [node name="Bags" type="Node2D" parent="."]
 
@@ -480,7 +712,7 @@ position = Vector2( 743.579, 50.7986 )
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 3.5, 7.21212 )
 scale = Vector2( 0.994318, 0.969697 )
-curve = SubResource( 16 )
+curve = SubResource( 15 )
 script = ExtResource( 20 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
@@ -500,7 +732,7 @@ script = ExtResource( 35 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Key"]
 position = Vector2( -1.00139, 1.25174 )
 scale = Vector2( 0.5, 0.5 )
-shape = SubResource( 17 )
+shape = SubResource( 16 )
 
 [node name="Sprite" type="Sprite" parent="Key"]
 scale = Vector2( 0.5, 0.5 )
@@ -515,13 +747,13 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 36 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_door"]
-shape = SubResource( 18 )
+shape = SubResource( 17 )
 
 [node name="Area2D" type="Area2D" parent="obj_door"]
 scale = Vector2( 1.5, 1.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_door/Area2D"]
-shape = SubResource( 19 )
+shape = SubResource( 18 )
 [connection signal="bagsCollected" from="Bags/obj_bag" to="obj_player/Money Bag/Count" method="_on_obj_bag_collected"]
 [connection signal="body_entered" from="Bags/obj_bag" to="Bags/obj_bag" method="_on_obj_bag_body_entered"]
 [connection signal="bagsCollected" from="Bags/obj_bag2" to="obj_player/Money Bag/Count" method="_on_obj_bag_collected"]
