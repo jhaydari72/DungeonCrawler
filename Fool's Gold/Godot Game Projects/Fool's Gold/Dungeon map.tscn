@@ -563,19 +563,20 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 
 position = Vector2( 29, 539 )
 script = ExtResource( 12 )
 
-[node name="Camera2D" type="Camera2D" parent="obj_player"]
-position = Vector2( 32.9025, 4.92676 )
-offset = Vector2( -35, 0 )
-current = true
-zoom = Vector2( 0.18, 0.2 )
-smoothing_enabled = true
-
 [node name="Sprite" type="Sprite" parent="obj_player"]
 position = Vector2( 0, 3.31964 )
 scale = Vector2( 0.40462, 0.431326 )
 texture = ExtResource( 11 )
 hframes = 22
 frame = 2
+
+[node name="Camera2D" type="Camera2D" parent="obj_player/Sprite"]
+current = true
+zoom = Vector2( 0.18, 0.2 )
+drag_margin_left = 0.1
+drag_margin_right = 0.1
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_player"]
 position = Vector2( 0.244171, 2.31964 )
@@ -674,6 +675,9 @@ custom_fonts/font = SubResource( 42 )
 custom_colors/font_color = Color( 0.945098, 1, 0, 1 )
 text = "00"
 script = ExtResource( 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="torch" type="StaticBody2D" parent="."]
 script = ExtResource( 15 )
