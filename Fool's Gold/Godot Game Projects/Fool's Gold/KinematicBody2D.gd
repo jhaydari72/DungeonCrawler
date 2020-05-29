@@ -17,6 +17,8 @@ onready var player_anim = $player_anim
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 
+func _ready():
+	animationTree.active = true
 
 #this function is called every frame of the game
 func _physics_process(delta):
