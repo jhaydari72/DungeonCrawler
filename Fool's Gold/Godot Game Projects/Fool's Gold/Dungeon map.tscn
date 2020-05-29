@@ -518,38 +518,38 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
-[sub_resource type="DynamicFont" id=45]
+[sub_resource type="DynamicFont" id=39]
 size = 8
 font_data = ExtResource( 21 )
 
-[sub_resource type="DynamicFont" id=46]
+[sub_resource type="DynamicFont" id=40]
 size = 8
 font_data = ExtResource( 21 )
 
-[sub_resource type="DynamicFont" id=47]
+[sub_resource type="DynamicFont" id=41]
 size = 8
 font_data = ExtResource( 21 )
 
-[sub_resource type="DynamicFont" id=48]
+[sub_resource type="DynamicFont" id=42]
 size = 8
 font_data = ExtResource( 21 )
 
-[sub_resource type="RectangleShape2D" id=39]
+[sub_resource type="RectangleShape2D" id=43]
 extents = Vector2( 2.2953, 6.27969 )
 
-[sub_resource type="RectangleShape2D" id=40]
+[sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 15.6504, 18.1411 )
 
-[sub_resource type="Curve2D" id=41]
+[sub_resource type="Curve2D" id=45]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 446.034, 36.9063, 0, 0, 0, 0, 267.017, 41.0312, 0, 0, 0, 0, 447.04, 36.9063 )
 }
 
-[sub_resource type="RectangleShape2D" id=42]
+[sub_resource type="RectangleShape2D" id=46]
 
-[sub_resource type="RectangleShape2D" id=43]
+[sub_resource type="RectangleShape2D" id=47]
 
-[sub_resource type="RectangleShape2D" id=44]
+[sub_resource type="RectangleShape2D" id=48]
 
 [node name="Dungeon map" type="Node2D"]
 position = Vector2( -1, 2 )
@@ -628,7 +628,7 @@ margin_left = -15.4272
 margin_top = 588.994
 margin_right = 2.57281
 margin_bottom = 594.994
-custom_fonts/font = SubResource( 45 )
+custom_fonts/font = SubResource( 39 )
 custom_colors/font_color = Color( 0.945098, 1, 0, 1 )
 text = "x $"
 __meta__ = {
@@ -640,7 +640,7 @@ margin_left = 5.56313
 margin_top = 590.285
 margin_right = 19.5631
 margin_bottom = 596.285
-custom_fonts/font = SubResource( 46 )
+custom_fonts/font = SubResource( 40 )
 custom_colors/font_color = Color( 0.945098, 1, 0, 1 )
 text = "00"
 script = ExtResource( 19 )
@@ -658,7 +658,7 @@ margin_left = 36.8544
 margin_top = 590.417
 margin_right = 43.8544
 margin_bottom = 598.417
-custom_fonts/font = SubResource( 47 )
+custom_fonts/font = SubResource( 41 )
 custom_colors/font_color = Color( 0.945098, 1, 0, 1 )
 text = "x"
 __meta__ = {
@@ -670,7 +670,7 @@ margin_left = 45.5728
 margin_top = 590.851
 margin_right = 53.5728
 margin_bottom = 596.851
-custom_fonts/font = SubResource( 48 )
+custom_fonts/font = SubResource( 42 )
 custom_colors/font_color = Color( 0.945098, 1, 0, 1 )
 text = "00"
 script = ExtResource( 34 )
@@ -692,14 +692,14 @@ texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="torch"]
 position = Vector2( 55.328, 457.012 )
-shape = SubResource( 39 )
+shape = SubResource( 43 )
 
 [node name="Area2D" type="Area2D" parent="torch"]
 position = Vector2( 0, 2.57212 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="torch/Area2D"]
 position = Vector2( 44.0324, 448.119 )
-shape = SubResource( 40 )
+shape = SubResource( 44 )
 
 [node name="Bags" type="Node2D" parent="."]
 
@@ -733,7 +733,7 @@ position = Vector2( 743.579, 50.7986 )
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 3.5, 7.21212 )
 scale = Vector2( 0.994318, 0.969697 )
-curve = SubResource( 41 )
+curve = SubResource( 45 )
 script = ExtResource( 20 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
@@ -753,7 +753,7 @@ script = ExtResource( 35 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Key"]
 position = Vector2( -1.00139, 1.25174 )
 scale = Vector2( 0.5, 0.5 )
-shape = SubResource( 42 )
+shape = SubResource( 46 )
 
 [node name="Sprite" type="Sprite" parent="Key"]
 scale = Vector2( 0.5, 0.5 )
@@ -769,7 +769,7 @@ texture = ExtResource( 36 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_door"]
 position = Vector2( 0.631119, -0.315567 )
-shape = SubResource( 43 )
+shape = SubResource( 47 )
 
 [node name="Area2D" type="Area2D" parent="obj_door"]
 visible = false
@@ -777,7 +777,7 @@ scale = Vector2( 1.5, 1.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_door/Area2D"]
 position = Vector2( -0.631124, 0.946678 )
-shape = SubResource( 44 )
+shape = SubResource( 48 )
 [connection signal="bagsCollected" from="Bags/obj_bag" to="obj_player/Money Bag/Count" method="_on_obj_bag_collected"]
 [connection signal="body_entered" from="Bags/obj_bag" to="Bags/obj_bag" method="_on_obj_bag_body_entered"]
 [connection signal="bagsCollected" from="Bags/obj_bag2" to="obj_player/Money Bag/Count" method="_on_obj_bag_collected"]
