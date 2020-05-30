@@ -10,6 +10,6 @@ func _ready():
 func _process(delta):
 	follow.set_offset(follow.get_offset() + 50 * delta)
 
-
+# deletes pathing enemy
 func _on_Hurtbox_area_entered(area):
 	queue_free()
