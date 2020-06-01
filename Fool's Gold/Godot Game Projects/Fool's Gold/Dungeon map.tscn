@@ -725,8 +725,8 @@ radius = 3.12059
 height = 12.0896
 
 [sub_resource type="Gradient" id=51]
-offsets = PoolRealArray( 0.0148148, 0.459259, 0.985185, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.769531, 0.519354, 0.165329, 1, 0.652344, 0.0311148, 0, 1, 1, 0, 0, 1 )
+offsets = PoolRealArray( 0.0148148, 0.525926, 0.985185, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.789063, 0.382154, 0.055481, 1, 0.652344, 0.0311148, 0, 1, 1, 0, 0, 1 )
 
 [sub_resource type="GradientTexture" id=52]
 gradient = SubResource( 51 )
